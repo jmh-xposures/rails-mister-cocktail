@@ -9,6 +9,7 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = Cocktail.new(cocktail_params) #does this variable have to stay the same as in the new method
+
     if @cocktail.save
       redirect_to new_cocktail_dose_path(@cocktail)
     else
@@ -18,11 +19,12 @@ class CocktailsController < ApplicationController
 
   def show
     @cocktail = Cocktail.find(params[:id])
+
   end
 
   private
 
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :photo)
   end
 end
